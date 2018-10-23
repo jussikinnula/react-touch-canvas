@@ -1,0 +1,10 @@
+**/node_modules/
+tmp/
+__MACOSX/
+.DS_Store
+Thumbs.db
+.env*
+npm-debug.log
+coverage/
+.vscode
+lib

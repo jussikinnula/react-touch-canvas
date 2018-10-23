@@ -1,0 +1,59 @@
+{
+  "name": "react-touch-zoom-pan-canvas",
+  "version": "0.1.0",
+  "description": "React higher order components to create zoomable/pannable canvas",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jussikinnula/react-touch-zoom-pan-canvas"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Jussi Kinnula <jussi.kinnula@gmail.com>"
+  ],
+  "engines": {
+    "node": "^8.11.1",
+    "npm": "^5.6.0"
+  },
+  "scripts": {
+    "build": "npm run build:lib",
+    "prebuild:lib": "npm run clean && npm run lint",
+    "build:lib": "tsc --project ./tsconfig.lib.json --outDir ./lib --declaration",
+    "clean": "rimraf ./lib",
+    "start": "REMOTE_LOG=ws://0.0.0.0:12345 webpack-dev-server",
+    "remote-log": "REMOTE_LOG_PORT=12345 REMOTE_LOG_HOST=0.0.0.0 remote-log",
+    "lint": "tslint --project ./tsconfig.lib.json"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@types/react": "^16.4.18",
+    "react": "^16.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.0",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "@types/webpack": "^4.4.17",
+    "@types/webpack-env": "^1.13.6",
+    "@types/webpack-merge": "4.1.3",
+    "css-loader": "^1.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "remote-log-websocket": "^0.0.3",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.23.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "ts-loader": "^5.2.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.1.3",
+    "webpack": "^4.22.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
