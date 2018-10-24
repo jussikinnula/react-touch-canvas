@@ -188,7 +188,7 @@ export class Touch extends React.Component<Props, {}> {
   }
 
   _onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    const { wheelMax = WHEEL_MAX} = this.props
+    const { wheelMax = WHEEL_MAX } = this.props
     event.preventDefault()
 
     let delta = Math.round(event.deltaY / 10)
