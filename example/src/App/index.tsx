@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Touch, Canvas } from '../../src'
+import { Touch, Canvas } from '../../../src'
 import './index.styl'
 
 interface State {

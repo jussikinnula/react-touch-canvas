@@ -1,70 +1,70 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app"],{
 
-/***/ "./example/App/index.styl":
+/***/ "./example/src/App/index.styl":
+/*!************************************!*\
+  !*** ./example/src/App/index.styl ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\nvar content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--5-1!../../../node_modules/stylus-loader??ref--5-2!./index.styl */ \"./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/src/App/index.styl\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"sourceMap\":true,\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./example/src/App/index.styl?");
+
+/***/ }),
+
+/***/ "./example/src/App/index.tsx":
+/*!***********************************!*\
+  !*** ./example/src/App/index.tsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nvar __extends = (this && this.__extends) || (function () {\n    var extendStatics = function (d, b) {\n        extendStatics = Object.setPrototypeOf ||\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\n        return extendStatics(d, b);\n    }\n    return function (d, b) {\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar src_1 = __webpack_require__(/*! ../../../src */ \"./src/index.ts\");\n__webpack_require__(/*! ./index.styl */ \"./example/src/App/index.styl\");\nvar App = (function (_super) {\n    __extends(App, _super);\n    function App() {\n        var _this = _super !== null && _super.apply(this, arguments) || this;\n        _this.container = null;\n        _this.ctx = null;\n        _this.image = new Image();\n        _this.state = {\n            width: 800,\n            height: 600\n        };\n        _this.onAnimationFrame = function (ctx, _time) {\n            var _a = _this.image, width = _a.width, height = _a.height;\n            ctx.drawImage(_this.image, 0, 0, width, height);\n        };\n        _this.updateContainer = function (node) {\n            _this.container = node;\n        };\n        _this.updateDimensions = function () {\n            if (!_this.container)\n                return;\n            var _a = _this.container.getBoundingClientRect(), width = _a.width, height = _a.height;\n            _this.setState({ width: width, height: height });\n        };\n        return _this;\n    }\n    App.prototype.componentWillMount = function () {\n        this.image.src = 'https://via.placeholder.com/350x150';\n    };\n    App.prototype.componentDidMount = function () {\n        var _this = this;\n        setTimeout(function () { return _this.updateDimensions(); }, 100);\n        window.addEventListener('resize', function () { return _this.updateDimensions(); });\n    };\n    App.prototype.componentWillUnmount = function () {\n        var _this = this;\n        window.removeEventListener('resize', function () { return _this.updateDimensions(); });\n    };\n    App.prototype.render = function () {\n        var _this = this;\n        var _a = this.state, width = _a.width, height = _a.height;\n        return (React.createElement(\"div\", { className: \"App\", ref: this.updateContainer },\n            React.createElement(src_1.Touch, { onScale: function (x, y) { return _this.ctx.scale(x, y); }, onTranslate: function (x, y) { return _this.ctx.translate(x, y); } },\n                React.createElement(src_1.Canvas, { width: width, height: height, onAnimationFrame: this.onAnimationFrame, getContext: function (ctx) { return _this.ctx = ctx; } }))));\n    };\n    return App;\n}(React.Component));\nexports.default = App;\n\n\n//# sourceURL=webpack:///./example/src/App/index.tsx?");
+
+/***/ }),
+
+/***/ "./example/src/index.styl":
 /*!********************************!*\
-  !*** ./example/App/index.styl ***!
+  !*** ./example/src/index.styl ***!
   \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nvar content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/stylus-loader??ref--5-2!./index.styl */ \"./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/App/index.styl\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"sourceMap\":true,\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./example/App/index.styl?");
+eval("\nvar content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/stylus-loader??ref--5-2!./index.styl */ \"./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/src/index.styl\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"sourceMap\":true,\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./example/src/index.styl?");
 
 /***/ }),
 
-/***/ "./example/App/index.tsx":
+/***/ "./example/src/index.tsx":
 /*!*******************************!*\
-  !*** ./example/App/index.tsx ***!
+  !*** ./example/src/index.tsx ***!
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __extends = (this && this.__extends) || (function () {\n    var extendStatics = function (d, b) {\n        extendStatics = Object.setPrototypeOf ||\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\n        return extendStatics(d, b);\n    }\n    return function (d, b) {\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar src_1 = __webpack_require__(/*! ../../src */ \"./src/index.ts\");\n__webpack_require__(/*! ./index.styl */ \"./example/App/index.styl\");\nvar App = (function (_super) {\n    __extends(App, _super);\n    function App() {\n        var _this = _super !== null && _super.apply(this, arguments) || this;\n        _this.container = null;\n        _this.ctx = null;\n        _this.image = new Image();\n        _this.state = {\n            width: 800,\n            height: 600\n        };\n        _this.onAnimationFrame = function (ctx, _time) {\n            var _a = _this.image, width = _a.width, height = _a.height;\n            ctx.drawImage(_this.image, 0, 0, width, height);\n        };\n        _this.updateContainer = function (node) {\n            _this.container = node;\n        };\n        _this.updateDimensions = function () {\n            if (!_this.container)\n                return;\n            var _a = _this.container.getBoundingClientRect(), width = _a.width, height = _a.height;\n            _this.setState({ width: width, height: height });\n        };\n        return _this;\n    }\n    App.prototype.componentWillMount = function () {\n        this.image.src = 'https://via.placeholder.com/350x150';\n    };\n    App.prototype.componentDidMount = function () {\n        var _this = this;\n        setTimeout(function () { return _this.updateDimensions(); }, 100);\n        window.addEventListener('resize', function () { return _this.updateDimensions(); });\n    };\n    App.prototype.componentWillUnmount = function () {\n        var _this = this;\n        window.removeEventListener('resize', function () { return _this.updateDimensions(); });\n    };\n    App.prototype.render = function () {\n        var _this = this;\n        var _a = this.state, width = _a.width, height = _a.height;\n        return (React.createElement(\"div\", { className: \"App\", ref: this.updateContainer },\n            React.createElement(src_1.Touch, { onScale: function (x, y) { return _this.ctx.scale(x, y); }, onTranslate: function (x, y) { return _this.ctx.translate(x, y); } },\n                React.createElement(src_1.Canvas, { width: width, height: height, onAnimationFrame: this.onAnimationFrame, getContext: function (ctx) { return _this.ctx = ctx; } }))));\n    };\n    return App;\n}(React.Component));\nexports.default = App;\n\n\n//# sourceURL=webpack:///./example/App/index.tsx?");
+eval("/* WEBPACK VAR INJECTION */(function(process) {\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar react_dom_1 = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nvar App_1 = __webpack_require__(/*! ./App */ \"./example/src/App/index.tsx\");\n__webpack_require__(/*! ./index.styl */ \"./example/src/index.styl\");\nif (process.env.REMOTE_LOG) {\n    __webpack_require__(/*! remote-log-websocket */ \"./node_modules/remote-log-websocket/lib/client.js\").default(process.env.REMOTE_LOG);\n    setTimeout(function () { return console.log('Hello remote!'); }, 500);\n}\nvar element = document.createElement('div');\ndocument.body.appendChild(element);\nreact_dom_1.render(React.createElement(App_1.default, null), element, null);\n\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ \"./node_modules/process/browser.js\")))\n\n//# sourceURL=webpack:///./example/src/index.tsx?");
 
 /***/ }),
 
-/***/ "./example/index.styl":
-/*!****************************!*\
-  !*** ./example/index.styl ***!
-  \****************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/src/App/index.styl":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2!./example/src/App/index.styl ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader??ref--5-1!../node_modules/stylus-loader??ref--5-2!./index.styl */ \"./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/index.styl\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"sourceMap\":true,\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./example/index.styl?");
+eval("exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(true);\n// imports\n\n\n// module\nexports.push([module.i, \".App {\\n  position: absolute;\\n  top: 0;\\n  left: 0;\\n  right: 0;\\n  bottom: 0;\\n}\\n.App canvas {\\n  background-color: #0ff;\\n  margin: 0;\\n  padding: 0;\\n}\\n/*# sourceMappingURL=example/src/App/index.css.map */\", \"\", {\"version\":3,\"sources\":[\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/src/App/example/src/App/index.styl\",\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/src/App/index.styl\"],\"names\":[],\"mappings\":\"AAAA;EACE,mBAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;EACA,UAAA;CCCD;ADCC;EACE,uBAAA;EACA,UAAA;EACA,WAAA;CCCH;AACD,qDAAqD\",\"file\":\"index.styl\",\"sourcesContent\":[\".App\\n  position absolute\\n  top 0\\n  left 0\\n  right 0\\n  bottom 0\\n  \\n  canvas\\n    background-color cyan\\n    margin 0\\n    padding 0\",\".App {\\n  position: absolute;\\n  top: 0;\\n  left: 0;\\n  right: 0;\\n  bottom: 0;\\n}\\n.App canvas {\\n  background-color: #0ff;\\n  margin: 0;\\n  padding: 0;\\n}\\n/*# sourceMappingURL=example/src/App/index.css.map */\"],\"sourceRoot\":\"\"}]);\n\n// exports\n\n\n//# sourceURL=webpack:///./example/src/App/index.styl?./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2");
 
 /***/ }),
 
-/***/ "./example/index.tsx":
-/*!***************************!*\
-  !*** ./example/index.tsx ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("/* WEBPACK VAR INJECTION */(function(process) {\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar react_dom_1 = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nvar App_1 = __webpack_require__(/*! ./App */ \"./example/App/index.tsx\");\n__webpack_require__(/*! ./index.styl */ \"./example/index.styl\");\nif (process.env.REMOTE_LOG) {\n    __webpack_require__(/*! remote-log-websocket */ \"./node_modules/remote-log-websocket/lib/client.js\").default(process.env.REMOTE_LOG);\n    setTimeout(function () { return console.log('Hello remote!'); }, 500);\n}\nvar element = document.createElement('div');\ndocument.body.appendChild(element);\nreact_dom_1.render(React.createElement(App_1.default, null), element, null);\n\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node_modules/process/browser.js */ \"./node_modules/process/browser.js\")))\n\n//# sourceURL=webpack:///./example/index.tsx?");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/App/index.styl":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/src/index.styl":
 /*!***********************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2!./example/App/index.styl ***!
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2!./example/src/index.styl ***!
   \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(true);\n// imports\n\n\n// module\nexports.push([module.i, \".App {\\n  position: absolute;\\n  top: 0;\\n  left: 0;\\n  right: 0;\\n  bottom: 0;\\n}\\n.App canvas {\\n  background-color: #0ff;\\n  margin: 0;\\n  padding: 0;\\n}\\n/*# sourceMappingURL=example/App/index.css.map */\", \"\", {\"version\":3,\"sources\":[\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/App/example/App/index.styl\",\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/App/index.styl\"],\"names\":[],\"mappings\":\"AAAA;EACE,mBAAA;EACA,OAAA;EACA,QAAA;EACA,SAAA;EACA,UAAA;CCCD;ADCC;EACE,uBAAA;EACA,UAAA;EACA,WAAA;CCCH;AACD,iDAAiD\",\"file\":\"index.styl\",\"sourcesContent\":[\".App\\n  position absolute\\n  top 0\\n  left 0\\n  right 0\\n  bottom 0\\n  \\n  canvas\\n    background-color cyan\\n    margin 0\\n    padding 0\",\".App {\\n  position: absolute;\\n  top: 0;\\n  left: 0;\\n  right: 0;\\n  bottom: 0;\\n}\\n.App canvas {\\n  background-color: #0ff;\\n  margin: 0;\\n  padding: 0;\\n}\\n/*# sourceMappingURL=example/App/index.css.map */\"],\"sourceRoot\":\"\"}]);\n\n// exports\n\n\n//# sourceURL=webpack:///./example/App/index.styl?./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js?!./node_modules/stylus-loader/index.js?!./example/index.styl":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2!./example/index.styl ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(true);\n// imports\n\n\n// module\nexports.push([module.i, \"html,\\nbody {\\n  position: fixed;\\n  overflow: hidden;\\n  margin: 0;\\n  padding: 0;\\n}\\nbody > div {\\n  width: 100vw;\\n  height: 100vh;\\n  overflow-y: scroll;\\n  -webkit-overflow-scrolling: touch;\\n}\\n/*# sourceMappingURL=example/index.css.map */\", \"\", {\"version\":3,\"sources\":[\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/example/index.styl\",\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/index.styl\"],\"names\":[],\"mappings\":\"AAAA;;EACE,gBAAA;EACA,iBAAA;EACA,UAAA;EACA,WAAA;CCED;ADAD;EACE,aAAA;EACA,cAAA;EACA,mBAAA;EACA,kCAAA;CCED;AACD,6CAA6C\",\"file\":\"index.styl\",\"sourcesContent\":[\"html, body\\n  position fixed\\n  overflow hidden\\n  margin 0\\n  padding 0\\n\\nbody > div\\n  width 100vw\\n  height 100vh\\n  overflow-y scroll\\n  -webkit-overflow-scrolling touch\\n\",\"html,\\nbody {\\n  position: fixed;\\n  overflow: hidden;\\n  margin: 0;\\n  padding: 0;\\n}\\nbody > div {\\n  width: 100vw;\\n  height: 100vh;\\n  overflow-y: scroll;\\n  -webkit-overflow-scrolling: touch;\\n}\\n/*# sourceMappingURL=example/index.css.map */\"],\"sourceRoot\":\"\"}]);\n\n// exports\n\n\n//# sourceURL=webpack:///./example/index.styl?./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2");
+eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(true);\n// imports\n\n\n// module\nexports.push([module.i, \"html,\\nbody {\\n  position: fixed;\\n  overflow: hidden;\\n  margin: 0;\\n  padding: 0;\\n}\\nbody > div {\\n  width: 100vw;\\n  height: 100vh;\\n  overflow-y: scroll;\\n  -webkit-overflow-scrolling: touch;\\n}\\n/*# sourceMappingURL=example/src/index.css.map */\", \"\", {\"version\":3,\"sources\":[\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/src/example/src/index.styl\",\"/Users/jami/dev/react-touch-zoom-pan-canvas/example/src/index.styl\"],\"names\":[],\"mappings\":\"AAAA;;EACE,gBAAA;EACA,iBAAA;EACA,UAAA;EACA,WAAA;CCED;ADAD;EACE,aAAA;EACA,cAAA;EACA,mBAAA;EACA,kCAAA;CCED;AACD,iDAAiD\",\"file\":\"index.styl\",\"sourcesContent\":[\"html, body\\n  position fixed\\n  overflow hidden\\n  margin 0\\n  padding 0\\n\\nbody > div\\n  width 100vw\\n  height 100vh\\n  overflow-y scroll\\n  -webkit-overflow-scrolling touch\\n\",\"html,\\nbody {\\n  position: fixed;\\n  overflow: hidden;\\n  margin: 0;\\n  padding: 0;\\n}\\nbody > div {\\n  width: 100vw;\\n  height: 100vh;\\n  overflow-y: scroll;\\n  -webkit-overflow-scrolling: touch;\\n}\\n/*# sourceMappingURL=example/src/index.css.map */\"],\"sourceRoot\":\"\"}]);\n\n// exports\n\n\n//# sourceURL=webpack:///./example/src/index.styl?./node_modules/css-loader??ref--5-1!./node_modules/stylus-loader??ref--5-2");
 
 /***/ }),
 
@@ -116,4 +116,4 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nvar sv
 
 /***/ })
 
-},[["./example/index.tsx","runtime","vendor"]]]);
+},[["./example/src/index.tsx","runtime","vendor"]]]);

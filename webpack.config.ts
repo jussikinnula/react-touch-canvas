@@ -29,13 +29,13 @@ const config: webpack.Configuration = {
   },
 
   entry: {
-    app: './example/index'
+    app: './example/src/index'
   },
 
   output: {
     filename: 'app.js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, './example/dist'),
+    // publicPath: '/'
   },
 
   plugins: [
@@ -51,7 +51,7 @@ const config: webpack.Configuration = {
       hash: true,
       inject: 'body',
       title: 'react-zoom-pan example',
-      template: './example/index.html'
+      template: './example/src/index.html'
     }),
 
     new OccurrenceOrderPlugin(true),
