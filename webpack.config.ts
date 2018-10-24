@@ -72,6 +72,10 @@ const config: webpack.Configuration = {
           { loader: 'css-loader', options: { sourceMap: true } },
           { loader: 'stylus-loader', options: { sourceMap: true } }
         ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        loader: 'file-loader'
       }
     ]
   },

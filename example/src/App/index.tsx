@@ -20,7 +20,7 @@ export default class App extends React.Component<{}, State> {
   }
 
   componentWillMount() {
-    this.image.src = 'https://via.placeholder.com/350x150'
+    this.image.src = require('./HotAirBalloon.svg')
   }
 
   componentDidMount() {
