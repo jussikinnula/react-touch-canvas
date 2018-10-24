@@ -4,7 +4,9 @@ This is a set of two React higher order components, for hooking mouse and touch 
 
 The project doesn't have dependencies to any other libraries than React (and TypeScript types for React).
 
-See the project on GitHub: https://github.com/jussikinnula/react-touch-zoom-pan-canvas
+Project home page: [https://jussikinnula.github.io/react-touch-zoom-pan-canvas](https://jussikinnula.github.io/react-touch-zoom-pan-canvas)
+
+See the project on GitHub: [https://github.com/jussikinnula/react-touch-zoom-pan-canvas](https://github.com/jussikinnula/react-touch-zoom-pan-canvas)
 
 ## Installation
 
@@ -18,9 +20,9 @@ $ npm install --save react-touch-zoom-pan-canvas
 
 You can check an example application, which sets canvas full screen and also updates the canvas size on resize, and other fancy things:
 
-Live version: https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example/
+Live version: [https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example](https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example)
 
-Source: https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/src
+Source: [https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/src](https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/src)
 
 ### Minimal example
 
