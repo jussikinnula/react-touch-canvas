@@ -1,12 +1,12 @@
-import * as webpack from 'webpack';
-import * as path from 'path';
+import * as webpack from 'webpack'
+import * as path from 'path'
 
-const DefinePlugin = webpack.DefinePlugin;
-const LoaderOptionsPlugin = webpack.LoaderOptionsPlugin;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const NoEmitOnErrorsPlugin = webpack.NoEmitOnErrorsPlugin;
-const OccurrenceOrderPlugin = webpack.optimize.OccurrenceOrderPlugin;
-const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
+const DefinePlugin = webpack.DefinePlugin
+const LoaderOptionsPlugin = webpack.LoaderOptionsPlugin
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const NoEmitOnErrorsPlugin = webpack.NoEmitOnErrorsPlugin
+const OccurrenceOrderPlugin = webpack.optimize.OccurrenceOrderPlugin
+const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin
 
 const isDev = process.env.NODE_ENV === 'development'
 
