@@ -16,6 +16,14 @@ $ npm install --save react-touch-zoom-pan-canvas
 
 ### Example
 
+You can check an example application, which sets canvas full screen and also updates the canvas size on resize, and other fancy things:
+
+Live version: https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example/
+
+Source: https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/src
+
+### Minimal example
+
 Here's a very minimal version, which writes the seconds after animation started to the canvas.
 
 ```tsx
