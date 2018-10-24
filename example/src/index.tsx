@@ -4,7 +4,7 @@ import App from './App';
 import './index.styl'
 
 if (process.env.REMOTE_LOG) {
-  require('remote-log-websocket').default(process.env.REMOTE_LOG)
+  require('remote-log-websocket')(process.env.REMOTE_LOG)
   setTimeout(() => console.log('Hello remote!'), 500)
 }
 
