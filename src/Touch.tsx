@@ -18,7 +18,6 @@ interface Props {
   onPinchStart?: Function
   onPinch?: Function
   onPinchEnd?: Function
-  onZoom?: Function
   onTranslate?: (x: number, y: number) => void
   onScale?: (x: number, y: number) => void
 }
@@ -120,12 +119,12 @@ export class Touch extends React.Component<Props, {}> {
   _onPanEnd = (event: any) => {
     const { onPanEnd } = this.props
     this.panStart = null
-    if (!this.panned) this.zoom(event.shiftKey ? -1 : 1)
+    if (!this.panned) this._zoom(event.shiftKey ? -1 : 1)
     if (onPanEnd) onPanEnd(event)
   }
 
-  zoom = (clicks: number) => {
-    const { onZoom, scaleFactor = 1.1, onScale, onTranslate } = this.props
+  _zoom = (clicks: number) => {
+    const { scaleFactor = 1.1, onScale, onTranslate } = this.props
 
     if ((this.zoomLevel + clicks) < 0) return
 
@@ -133,7 +132,6 @@ export class Touch extends React.Component<Props, {}> {
 
     const { x, y } = transformedPoint(this.lastX, this.lastY)
 
-    console.log({ x, y, lastX: this.lastX, lastY: this.lastY })
     translate(x, y)
     if (onTranslate) onTranslate(x, y)
 
@@ -143,8 +141,6 @@ export class Touch extends React.Component<Props, {}> {
 
     translate(-x, -y)
     if (onTranslate) onTranslate(-x, -y)
-
-    if (onZoom) onZoom()
   }
 
   _onPinchStart = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -173,7 +169,7 @@ export class Touch extends React.Component<Props, {}> {
       if (this.lastDistance) {
         const initialDistance = getDistance(startTouch1, startTouch2)
         const ratio = (distance - this.lastDistance) / initialDistance
-        this.zoom(ratio * touchSensitivity)
+        this._zoom(ratio * touchSensitivity)
       }
 
       this.lastDistance = distance
@@ -195,11 +191,8 @@ export class Touch extends React.Component<Props, {}> {
     if (delta < 0 || delta > 0) {
       if (delta > wheelMax) delta = wheelMax
       else if (delta < -wheelMax) delta = -wheelMax
-      this.zoom(delta)
+      this._zoom(delta)
     }
-
-    const { onZoom } = this.props
-    if (onZoom) onZoom(event)
   }
 
   render() {
@@ -207,7 +200,6 @@ export class Touch extends React.Component<Props, {}> {
       onPanStart,
       onPan,
       onPanEnd,
-      onZoom,
       onTranslate,
       onScale,
       ...props

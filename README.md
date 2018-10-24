@@ -76,7 +76,6 @@ All parameters are optional, `onTranslate` and `onScale` are recommended to be u
   onPinchStart={(event) => { ... }} // raw events, when pinch zoom starts
   onPinch={(event) => { ... }} // raw events, when pinch zooming is active (e.g. pinch gesture between two touch points is happening)
   onPinchEnd={(event) => { ... }} // raw events, when pinch zoom ends
-  onZoom={(event) => { ... }} // raw events, when zooming (either with pinch, mouse wheel or mouse click)
   onTranslate={(x: number, y: number) => { ... }) // set Canvas translation matrix (e.g. ctx.translate(x, y))
   onScale={(x: number, y: number) => { ... }) // set Canvas scale (e.g. ctx.scale(x, y))
 >
