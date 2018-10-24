@@ -53,20 +53,20 @@ export default class App extends React.Component {
 
 ### Touch -component
 
-All parameters are optional, `onTranslate` and `onScale` are recommended to be used - so that Canvas context scaling and translation matrix is synced.
+All parameters are optional, `onTranslate` and `onScale` are recommended to be used - so that Canvas context scaling and translation matrix is synced. All raw events are untouched - either `React.MouseEvent<HTMLDivElement>` or `React.TouchEvent<HTMLDivElement>`.
 
 ```tsx
 <Touch
   scaleFactor={1.1} // set the scale factor (default 1.1) for zooming
   wheelMax={5} // maximum wheel zoom amount (default 5)
   touchSensitivity={5} // touch sensitivity (default 5)
-  onPanStart={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when panning starts
-  onPan={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when panning is active (e.g. touch or mouse moves)
-  onPanEnd={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when panning ends
-  onPinchStart={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when pinch zoom starts
-  onPinch={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when pinch zooming is active (e.g. pinch gesture between two touch points is happening)
-  onPinchEnd={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when pinch zoom ends
-  onZoom={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when zooming (either with pinch, mouse wheel or mouse click)
+  onPanStart={(event) => { ... }} // raw events, when panning starts
+  onPan={(event) => { ... }} // raw events, when panning is active (e.g. touch or mouse moves)
+  onPanEnd={(event) => { ... }} // raw events, when panning ends
+  onPinchStart={(event) => { ... }} // raw events, when pinch zoom starts
+  onPinch={(event) => { ... }} // raw events, when pinch zooming is active (e.g. pinch gesture between two touch points is happening)
+  onPinchEnd={(event) => { ... }} // raw events, when pinch zoom ends
+  onZoom={(event) => { ... }} // raw events, when zooming (either with pinch, mouse wheel or mouse click)
   onTranslate={(x: number, y: number) => { ... }) // set Canvas translation matrix (e.g. ctx.translate(x, y))
   onScale={(x: number, y: number) => { ... }) // set Canvas scale (e.g. ctx.scale(x, y))
 >
