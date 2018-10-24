@@ -21,7 +21,7 @@
     "build": "npm run build:lib && npm run build:example",
     "build:lib": "tsc --project ./tsconfig.lib.json --outDir ./lib --declaration",
     "build:example": "NODE_ENV=production webpack",
-    "clean": "rimraf ./lib && rimraf ./example/dist",
+    "clean": "rimraf ./lib && rimraf ./example/*.app.js && rimraf ./example/index.html",
     "start": "NODE_ENV=development REMOTE_LOG=ws://0.0.0.0:12345 webpack-dev-server --host 0.0.0.0 --contentBase './src' --hot --port 5000",
     "remote-log": "REMOTE_LOG_PORT=12345 REMOTE_LOG_HOST=0.0.0.0 remote-log",
     "lint": "tslint --project ./tsconfig.lib.json"

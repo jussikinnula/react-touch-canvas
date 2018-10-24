@@ -34,8 +34,7 @@ const config: webpack.Configuration = {
 
   output: {
     filename: 'app.js',
-    path: path.resolve(__dirname, './example/dist'),
-    // publicPath: '/'
+    path: path.resolve(__dirname, './example')
   },
 
   plugins: [
