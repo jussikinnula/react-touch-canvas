@@ -31,8 +31,9 @@ export default class App extends React.Component {
   }
 
   render() {
+    const style = { width: '800px', border: '1px solid red' }
     return (
-      <div style={{ width: '800px', border: '1px solid red' }}>
+      <div style={style}>
         <Touch
           onScale={(x: number, y: number) => this.ctx.scale(x, y)}
           onTranslate={(x: number, y: number) => this.ctx.translate(x, y)}
