@@ -57,6 +57,8 @@ All parameters are optional, `onTranslate` and `onScale` are recommended to be u
 ```tsx
 <Touch
   scaleFactor={1.1} // set the scale factor (default 1.1) for zooming
+  wheelMax={5} // maximum wheel zoom amount (default 5)
+  touchSensitivity={5} // touch sensitivity (default 5)
   onPanStart={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when panning starts
   onPan={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when panning is active (e.g. touch or mouse moves)
   onPanEnd={(event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => { ... }} // raw events, when panning ends
@@ -70,6 +72,8 @@ All parameters are optional, `onTranslate` and `onScale` are recommended to be u
   ...
 </Touch>
 ```
+
+Note! Parameters `wheelMax` and `touchSensitivity` are device and operating system specific. So you need to test with real devices. If you want, you could share good values with this project so we could have good defaults in future.
 
 ### Canvas -component
 

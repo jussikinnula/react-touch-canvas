@@ -2,8 +2,7 @@ import * as React from 'react'
 import { scale, transformedPoint, translate, getDistance } from './utils'
 
 const WHEEL_MAX = 5
-const PINCH_THRESHOLD = 10
-const TOUCH_SENSITIVITY = 10
+const TOUCH_SENSITIVITY = 5
 
 type MouseEvent = React.MouseEvent<HTMLDivElement>
 type TouchEvent = React.TouchEvent<HTMLDivElement>
@@ -11,6 +10,8 @@ type PanEvent = MouseEvent | TouchEvent
 
 interface Props {
   scaleFactor?: number
+  wheelMax?: number
+  touchSensitivity?: number
   onPanStart?: Function
   onPan?: Function
   onPanEnd?: Function
@@ -24,8 +25,6 @@ interface Props {
 
 export class Touch extends React.Component<Props, {}> {
   node: HTMLDivElement = null
-
-  svg: SVGSVGElement = null
 
   lastX: number = null
 
@@ -160,7 +159,7 @@ export class Touch extends React.Component<Props, {}> {
   }
 
   _onPinch = (event: React.TouchEvent<HTMLDivElement>) => {
-    const { onPinch } = this.props
+    const { onPinch, touchSensitivity = TOUCH_SENSITIVITY } = this.props
 
     const touch1 = event.targetTouches[0]
     const touch2 = event.targetTouches[1]
@@ -174,7 +173,7 @@ export class Touch extends React.Component<Props, {}> {
       if (this.lastDistance) {
         const initialDistance = getDistance(startTouch1, startTouch2)
         const ratio = (distance - this.lastDistance) / initialDistance
-        this.zoom(ratio * 5)
+        this.zoom(ratio * touchSensitivity)
       }
 
       this.lastDistance = distance
@@ -189,12 +188,13 @@ export class Touch extends React.Component<Props, {}> {
   }
 
   _onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    const { wheelMax = WHEEL_MAX} = this.props
     event.preventDefault()
 
     let delta = Math.round(event.deltaY / 10)
     if (delta < 0 || delta > 0) {
-      if (delta > WHEEL_MAX) delta = WHEEL_MAX
-      else if (delta < -WHEEL_MAX) delta = -WHEEL_MAX
+      if (delta > wheelMax) delta = wheelMax
+      else if (delta < -wheelMax) delta = -wheelMax
       this.zoom(delta)
     }
 
