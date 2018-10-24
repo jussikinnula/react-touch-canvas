@@ -78,12 +78,14 @@ Note! Parameters `wheelMax` and `touchSensitivity` are device and operating syst
 
 ### Canvas -component
 
+The callbacks' `ctx` is `CanvasRenderingContext2D`, and time is a number (starting where the animation started).
+
 ```tsx
 <Canvas
   width={800} // Set width for the canvas
   height={600} // Set height for the canvas
-  onAnimationFrame={(ctx: CanvasRenderingContext2D, time: number) => { ... }} // draw anything to Canvas 2D context here (uses requestAnimationFrame to trigger redraw)
-  getContext={(ctx: CanvasRenderingContext2D) => { ... }} // get Canvas 2D context (this should be linked by Touch -component, to set scale and translate)
+  onAnimationFrame={(ctx, time) => { ... }} // draw anything to Canvas 2D context here (uses requestAnimationFrame to trigger redraw)
+  getContext={(ctx) => { ... }} // get Canvas 2D context (this should be linked by Touch -component, to set scale and translate)
 />
 ```
 
