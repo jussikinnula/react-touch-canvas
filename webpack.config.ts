@@ -8,6 +8,8 @@ const NoEmitOnErrorsPlugin = webpack.NoEmitOnErrorsPlugin;
 const OccurrenceOrderPlugin = webpack.optimize.OccurrenceOrderPlugin;
 const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
 
+const isDev = process.env.NODE_ENV === 'development'
+
 let definePluginParams: any = {
   'process.env.NODE_ENV': JSON.stringify('development')
 }
@@ -18,7 +20,7 @@ if (process.env.REMOTE_LOG) {
   }
 }
 
-const config = {
+const config: webpack.Configuration = {
   mode: 'development',
 
   resolve: {
@@ -54,9 +56,7 @@ const config = {
 
     new OccurrenceOrderPlugin(true),
 
-    new NoEmitOnErrorsPlugin(),
-
-    new HotModuleReplacementPlugin()
+    new NoEmitOnErrorsPlugin()
   ],
 
   module: {
@@ -93,25 +93,11 @@ const config = {
         }
       }
     }
-  },
-
-  devServer: {
-    host: '0.0.0.0',
-    contentBase: './src',
-    hot: true,
-    port: 5000,
-    stats: {
-      cached: true,
-      cachedAssets: true,
-      chunks: true,
-      chunkModules: false,
-      colors: true,
-      hash: false,
-      reasons: true,
-      timings: true,
-      version: false
-    }
   }
-};
+}
 
-export default config;
+if (process.env.NODE_ENV === 'development') {
+  config.plugins.push(new HotModuleReplacementPlugin())
+}
+
+export default config
