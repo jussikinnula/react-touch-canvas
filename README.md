@@ -32,27 +32,22 @@ Here's a very minimal version, which writes the seconds after animation started 
 import * as React from 'react'
 import { Touch, Canvas } from 'react-touch-zoom-pan-canvas'
 
-export default class App extends React.Component {
-  onAnimationFrame = (ctx: CanvasRenderingContext2D, time: number) => {
-    ctx.font = '30px Arial'
-    ctx.fillText(`time: ${Math.round(time)}`, 25, 50)
-  }
+const style = { width: '800px', border: '1px solid red' }
 
-  render() {
-    const style = { width: '800px', border: '1px solid red' }
-    return (
-      <div style={style}>
-        <Touch>
-          <Canvas
-            width={800}
-            height={600}
-            onAnimationFrame={this.onAnimationFrame}
-          />
-        </Touch>
-      </div>
-    );
-  }
-}
+export default const App = () => (
+  <div style={style}>
+    <Touch>
+      <Canvas
+        width={800}
+        height={600}
+        onAnimationFrame={(ctx) => {
+          ctx.font = '30px Arial'
+          ctx.fillText(`time: ${Math.round(time)}`, 25, 50)
+        }}
+      />
+    </Touch>
+  </div>
+)
 ```
 
 ### Touch -component
