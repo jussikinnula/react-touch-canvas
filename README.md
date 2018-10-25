@@ -73,6 +73,7 @@ Panning and pinching raw events are untouched (can be either `React.MouseEvent<H
   onPinchEnd={(event) => { ... }} // raw events, when pinch zoom ends
   onTranslate={(x: number, y: number) => { ... }) // raw coordinates, when matrix is translated
   onScale={(x: number, y: number) => { ... }) // raw coordinates, when matrix is scaled
+  onReset={() => { ... }} // called when matrix is reset
 >
   ...
 </Touch>
