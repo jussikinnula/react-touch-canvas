@@ -52,10 +52,7 @@ export default class App extends React.Component<{}, State> {
 
     return (
       <div className="App" ref={this.updateContainer}>
-        <Touch
-          onScale={(x: number, y: number) => this.ctx.scale(x, y)}
-          onTranslate={(x: number, y: number) => this.ctx.translate(x, y)}
-        >
+        <Touch>
           <Canvas
             width={width}
             height={height}
