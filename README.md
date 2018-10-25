@@ -33,8 +33,6 @@ import * as React from 'react'
 import { Touch, Canvas } from 'react-touch-zoom-pan-canvas'
 
 export default class App extends React.Component {
-  ctx: CanvasRenderingContext2D = null
-
   onAnimationFrame = (ctx: CanvasRenderingContext2D, time: number) => {
     ctx.font = '30px Arial'
     ctx.fillText(`time: ${Math.round(time)}`, 25, 50)
@@ -44,15 +42,11 @@ export default class App extends React.Component {
     const style = { width: '800px', border: '1px solid red' }
     return (
       <div style={style}>
-        <Touch
-          onScale={(x: number, y: number) => this.ctx.scale(x, y)}
-          onTranslate={(x: number, y: number) => this.ctx.translate(x, y)}
-        >
+        <Touch>
           <Canvas
             width={800}
             height={600}
             onAnimationFrame={this.onAnimationFrame}
-            getContext={(ctx: CanvasRenderingContext2D) => this.ctx = ctx}
           />
         </Touch>
       </div>
@@ -63,7 +57,13 @@ export default class App extends React.Component {
 
 ### Touch -component
 
-All parameters are optional, `onTranslate` and `onScale` are recommended to be used - so that Canvas context scaling and translation matrix is synced. All raw events are untouched - either `React.MouseEvent<HTMLDivElement>` or `React.TouchEvent<HTMLDivElement>`.
+All parameters are optional.
+
+Parameters `wheelMax` and `touchSensitivity` are device and operating system specific. So you need to test with real devices. If you want, you could share good values with this project so we could have good defaults in future.
+
+If you are hooking to an external Canvas, you want to set context based on `onTranslate` and `onScale` values (the coordinates are relative). The `onReset` is called on resize, when matrix is reset.
+
+Panning and pinching raw events are untouched (can be either `React.MouseEvent<HTMLDivElement>` or `React.TouchEvent<HTMLDivElement>`).
 
 ```tsx
 <Touch
@@ -76,18 +76,16 @@ All parameters are optional, `onTranslate` and `onScale` are recommended to be u
   onPinchStart={(event) => { ... }} // raw events, when pinch zoom starts
   onPinch={(event) => { ... }} // raw events, when pinch zooming is active (e.g. pinch gesture between two touch points is happening)
   onPinchEnd={(event) => { ... }} // raw events, when pinch zoom ends
-  onTranslate={(x: number, y: number) => { ... }) // set Canvas translation matrix (e.g. ctx.translate(x, y))
-  onScale={(x: number, y: number) => { ... }) // set Canvas scale (e.g. ctx.scale(x, y))
+  onTranslate={(x: number, y: number) => { ... }) // raw coordinates, when matrix is translated
+  onScale={(x: number, y: number) => { ... }) // raw coordinates, when matrix is scaled
 >
   ...
 </Touch>
 ```
 
-Note! Parameters `wheelMax` and `touchSensitivity` are device and operating system specific. So you need to test with real devices. If you want, you could share good values with this project so we could have good defaults in future.
-
 ### Canvas -component
 
-The callbacks' `ctx` is `CanvasRenderingContext2D`, and time is a number (starting where the animation started).
+The `ctx` in `onAnimationFrame` and `getContext` callbacks is `CanvasRenderingContext2D`, and time is a number (starting where the animation started).
 
 ```tsx
 <Canvas
@@ -102,7 +100,7 @@ The callbacks' `ctx` is `CanvasRenderingContext2D`, and time is a number (starti
 
 ### Utilities
 
-The `utils` -library used internally by Touch and Canvas -components is used to do matrix and distance calculations. You can look the inner workings also from 
+The `utils` -library used internally by Touch and Canvas -components is used to do matrix and distance calculations. You can look the inner workings also from the source.
 
 ### Remote Logging
 

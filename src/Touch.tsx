@@ -1,8 +1,6 @@
 import * as React from 'react'
-import { scale, transformedPoint, translate, getDistance } from './utils'
-
-const WHEEL_MAX = 5
-const TOUCH_SENSITIVITY = 5
+import { onChange, scale, translate, transformedPoint, reset, getDistance } from './utils'
+import { WHEEL_MAX, TOUCH_SENSITIVITY } from './constants'
 
 type MouseEvent = React.MouseEvent<HTMLDivElement>
 type TouchEvent = React.TouchEvent<HTMLDivElement>
@@ -20,6 +18,7 @@ interface Props {
   onPinchEnd?: Function
   onTranslate?: (x: number, y: number) => void
   onScale?: (x: number, y: number) => void
+  onReset?: () => void
 }
 
 export class Touch extends React.Component<Props, {}> {
@@ -39,11 +38,26 @@ export class Touch extends React.Component<Props, {}> {
 
   zoomLevel: number = 0
 
+  componentDidMount() {
+    window.addEventListener('resize', this._reset)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._reset)
+  }
+
   _setup = (node: HTMLDivElement) => {
     this.node = node
     this.node.style.display = 'block'
     this.node.style.margin = '0px'
     this.node.style.padding = '0px'
+  }
+
+  _reset = () => {
+    const { onReset } = this.props
+    reset()
+    this.zoomLevel = 0
+    if (onReset) onReset()
   }
 
   _updateCoordinatesMouse = (event: MouseEvent) => {

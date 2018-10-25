@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { translate, scale, transformedPoint } from './utils'
+import { onChange, transformedPoint } from './utils'
+import { SCALE, TRANSLATE, RESET } from './constants'
 
 interface Props {
   width: number
@@ -16,7 +17,9 @@ export class Canvas extends React.Component<Props, {}> {
 
   componentDidMount() {
     this.requestAnimationFrameId = requestAnimationFrame(this._onAnimationFrame)
-    window.addEventListener('resize', this._updateDimensions)
+    onChange.on(SCALE, (x: number, y: number) => this.ctx.scale(x, y))
+    onChange.on(TRANSLATE, (x: number, y: number) => this.ctx.translate(x, y))
+    onChange.on(RESET, () => this._updateDimensions())
   }
 
   componentDidUpdate() {
@@ -25,7 +28,6 @@ export class Canvas extends React.Component<Props, {}> {
 
   componentWillUnmount() {
     cancelAnimationFrame(this.requestAnimationFrameId)
-    window.removeEventListener('resize', this._updateDimensions)
   }
 
   _setupCanvas = (node: HTMLCanvasElement) => {
@@ -61,16 +63,6 @@ export class Canvas extends React.Component<Props, {}> {
 
     // Loop
     this.requestAnimationFrameId = requestAnimationFrame(this._onAnimationFrame)
-  }
-
-  translate(x: number, y: number) {
-    translate(x, y)
-    this.ctx.translate(x, y)
-  }
-
-  scale(x: number, y: number) {
-    scale(x, y)
-    this.ctx.scale(x, y)
   }
 
   render() {
