@@ -40,7 +40,7 @@ export default const App = () => (
       <Canvas
         width={800}
         height={600}
-        onAnimationFrame={(ctx) => {
+        onAnimationFrame={(ctx, time) => {
           ctx.font = '30px Arial'
           ctx.fillText(`time: ${Math.round(time)}`, 25, 50)
         }}
