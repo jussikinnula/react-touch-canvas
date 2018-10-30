@@ -22,7 +22,7 @@ You can check an example application, which sets canvas full screen and also upd
 
 Live version: [https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example](https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example)
 
-Source: [https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/src](https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/src)
+Source: [https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/example/src](https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/example/src)
 
 ### Minimal example
 

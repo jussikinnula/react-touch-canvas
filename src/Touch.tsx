@@ -47,6 +47,7 @@ export class Touch extends React.Component<Props, {}> {
   }
 
   _setup = (node: HTMLDivElement) => {
+    if (!node) return
     this.node = node
     this.node.style.display = 'block'
     this.node.style.margin = '0px'

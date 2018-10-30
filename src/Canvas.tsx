@@ -30,7 +30,8 @@ export class Canvas extends React.Component<Props, {}> {
     cancelAnimationFrame(this.requestAnimationFrameId)
   }
 
-  _setupCanvas = (node: HTMLCanvasElement) => {
+  _setup = (node: HTMLCanvasElement) => {
+    if (!node) return
     const { getContext } = this.props
     this.canvas = node
     this.ctx = this.canvas.getContext('2d')
@@ -39,6 +40,7 @@ export class Canvas extends React.Component<Props, {}> {
   }
 
   _updateDimensions = () => {
+    if (!this.canvas) return
     const { width = 640, height = 480 } = this.props
     this.canvas.width = width
     this.canvas.height = height
@@ -67,6 +69,6 @@ export class Canvas extends React.Component<Props, {}> {
 
   render() {
     const { width, height, onAnimationFrame, getContext, ...props } = this.props
-    return <canvas ref={this._setupCanvas} {...props} />
+    return <canvas ref={this._setup} {...props} />
   }
 }
