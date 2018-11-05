@@ -1,6 +1,6 @@
 {
   "name": "react-touch-zoom-pan-canvas",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "React higher order components to create zoomable/pannable canvas",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -23,7 +23,7 @@
     "build:lib": "tsc --project ./tsconfig.lib.json --outDir ./lib --declaration",
     "build:example": "NODE_ENV=production webpack",
     "clean": "rimraf ./lib && rimraf ./example/*.app.js && rimraf ./example/index.html",
-    "start": "NODE_ENV=development REMOTE_LOG=ws://0.0.0.0:12345 webpack-dev-server --host 0.0.0.0 --contentBase './src' --hot --port 5000",
+    "start": "NODE_ENV=development webpack-dev-server --host 0.0.0.0 --contentBase './src' --port 5000",
     "remote-log": "REMOTE_LOG_PORT=12345 REMOTE_LOG_HOST=0.0.0.0 remote-log",
     "lint": "tslint --project ./tsconfig.lib.json"
   },
@@ -48,7 +48,7 @@
     "html-webpack-plugin": "^3.2.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "remote-log-websocket": "^0.2.1",
+    "remote-log-websocket": "^0.4.1",
     "rimraf": "^2.6.2",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",

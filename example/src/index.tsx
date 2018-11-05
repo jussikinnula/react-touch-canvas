@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import App from './App';
+import { connect } from 'remote-log-websocket'
 import './index.styl'
 
 if (process.env.REMOTE_LOG) {
-  require('remote-log-websocket')(process.env.REMOTE_LOG)
+  connect(process.env.REMOTE_LOG)
   setTimeout(() => console.log('Hello remote!'), 500)
 }
 

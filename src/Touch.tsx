@@ -97,6 +97,7 @@ export class Touch extends React.Component<Props, {}> {
   }
 
   _onTouchMove = (event: TouchEvent) => {
+    event.preventDefault()
     this._updateCoordinatesTouch(event)
     if (event.targetTouches.length > 1) return this._onPinch(event)
     return this._onPanMove(event)

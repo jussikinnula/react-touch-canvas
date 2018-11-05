@@ -103,7 +103,7 @@ The `utils` -library used internally by Touch and Canvas -components is used to 
 In order to test with real touch -capable devices, you can use remote logging (e.g. get device console.log's into your console), with the following environment variables:
 
 ```bash
-$ REMOTE_LOG=http://x.x.x.x:12345 npm start
+$ REMOTE_LOG=ws://x.x.x.x:12345 npm start
 ```
 
 Note! Replace `x.x.x.x` with your computer's IP address, accessible from your touch device.
