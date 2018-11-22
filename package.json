@@ -1,15 +1,15 @@
 {
-  "name": "react-touch-zoom-pan-canvas",
-  "version": "0.3.5",
+  "name": "react-touch-canvas",
+  "version": "0.3.6",
   "description": "React higher order components to create zoomable/pannable canvas",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jussikinnula/react-touch-zoom-pan-canvas"
+    "url": "https://github.com/jussikinnula/react-touch-canvas"
   },
   "license": "MIT",
-  "homepage": "https://jussikinnula.github.io/react-touch-zoom-pan-canvas",
+  "homepage": "https://jussikinnula.github.io/react-touch-canvas",
   "contributors": [
     "Jussi Kinnula <jussi.kinnula@gmail.com>"
   ],

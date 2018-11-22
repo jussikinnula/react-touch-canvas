@@ -1,17 +1,17 @@
-# react-touch-zoom-pan-canvas
+# react-touch-canvas
 
 This is a set of two React higher order components, for hooking mouse and touch events panning/zooming functionality into your application.
 
 The project doesn't have dependencies to any other libraries than React (and TypeScript types for React).
 
-Project home page: [https://jussikinnula.github.io/react-touch-zoom-pan-canvas](https://jussikinnula.github.io/react-touch-zoom-pan-canvas)
+Project home page: [https://jussikinnula.github.io/react-touch-canvas](https://jussikinnula.github.io/react-touch-canvas)
 
-See the project on GitHub: [https://github.com/jussikinnula/react-touch-zoom-pan-canvas](https://github.com/jussikinnula/react-touch-zoom-pan-canvas)
+See the project on GitHub: [https://github.com/jussikinnula/react-touch-canvas](https://github.com/jussikinnula/react-touch-canvas)
 
 ## Installation
 
 ```bash
-$ npm install --save react-touch-zoom-pan-canvas
+$ npm install --save react-touch-canvas
 ```
 
 ## Usage
@@ -20,9 +20,9 @@ $ npm install --save react-touch-zoom-pan-canvas
 
 You can check an example application, which sets canvas full screen and also updates the canvas size on resize, and other fancy things:
 
-Live version: [https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example](https://jussikinnula.github.io/react-touch-zoom-pan-canvas/example)
+Live version: [https://jussikinnula.github.io/react-touch-canvas/example](https://jussikinnula.github.io/react-touch-canvas/example)
 
-Source: [https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/example/src](https://github.com/jussikinnula/react-touch-zoom-pan-canvas/tree/master/example/src)
+Source: [https://github.com/jussikinnula/react-touch-canvas/tree/master/example/src](https://github.com/jussikinnula/react-touch-canvas/tree/master/example/src)
 
 ### Minimal example
 
@@ -30,7 +30,7 @@ Here's a very minimal version, which writes the seconds after animation started 
 
 ```tsx
 import * as React from 'react'
-import { Touch, Canvas } from 'react-touch-zoom-pan-canvas'
+import { Touch, Canvas } from 'react-touch-canvas'
 
 const style = { width: '800px', border: '1px solid red' }
 
