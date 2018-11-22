@@ -19,7 +19,7 @@ export function scale(x: number, y: number) {
 
 export function rotate(radians: number) {
   const degrees = radians * 180 / Math.PI
-  matrix = matrix.rotate(degrees);
+  matrix = matrix.rotate(degrees)
   return onChange.emit(ROTATE, degrees)
 }
 
