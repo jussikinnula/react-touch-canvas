@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { EventEmitter } from 'events'
-import { TRANSLATE, SCALE, RESET } from './constants'
+import { TRANSLATE, SCALE, RESET, ROTATE } from './constants'
 
 const svg: SVGSVGElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
 let matrix: any = svg.createSVGMatrix()
@@ -15,6 +15,12 @@ export function translate(x: number, y: number) {
 export function scale(x: number, y: number) {
   matrix = matrix.scaleNonUniform(x, y)
   return onChange.emit(SCALE, x, y)
+}
+
+export function rotate(radians: number) {
+  const degrees = radians * 180 / Math.PI
+  matrix = matrix.rotate(degrees);
+  return onChange.emit(ROTATE, degrees)
 }
 
 export function transformedPoint(x: number, y: number) {

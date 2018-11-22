@@ -1,4 +1,5 @@
 export const RESET = 'RESET'
+export const ROTATE = 'ROTATE'
 export const SCALE = 'SCALE'
 export const TOUCH_SENSITIVITY = 5
 export const TRANSLATE = 'TRANSLATE'
