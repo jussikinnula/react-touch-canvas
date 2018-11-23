@@ -1,6 +1,10 @@
+export const MIN_ZOOM_LEVEL = 0
 export const RESET = 'RESET'
 export const ROTATE = 'ROTATE'
 export const SCALE = 'SCALE'
+export const SCALE_FACTOR = 1.1
 export const TOUCH_SENSITIVITY = 5
 export const TRANSLATE = 'TRANSLATE'
-export const WHEEL_MAX = 5
+export const WHEEL_MAX = 1
+export const WHEEL_SENSITIVITY_ROTATE = 2
+export const WHEEL_SENSITIVITY_ZOOM = 5

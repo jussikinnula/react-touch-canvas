@@ -7,5 +7,30 @@ html, body
 body > div
   width 100vw
   height 100vh
-  overflow-y scroll
+  overflow hidden
   -webkit-overflow-scrolling touch
+
+.App
+  &-Nav
+    position absolute
+    bottom 0
+    right 0
+    background-color rgba(255, 255, 0, 0.5)
+    z-index 98
+
+    &-Link
+      display inline-block
+      font-size 1em
+      text-decoration none
+      text-transform uppercase
+      letter-spacing: 0.1em
+      padding 1em
+      color black
+      &:visited
+        color black
+      &:hover
+        color black
+        background-color rgba(255, 128, 0, 0.75)
+      &:active
+        color black
+        background-color rgba(0, 255, 0, 0.75)

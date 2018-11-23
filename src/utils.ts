@@ -1,26 +1,26 @@
 import * as React from 'react'
 import { EventEmitter } from 'events'
-import { TRANSLATE, SCALE, RESET, ROTATE } from './constants'
+import { RESET, ROTATE, SCALE, TRANSLATE } from './constants'
 
 const svg: SVGSVGElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-let matrix: any = svg.createSVGMatrix()
+let matrix: DOMMatrix = svg.createSVGMatrix()
 
 export const onChange = new EventEmitter()
 
-export function translate(x: number, y: number) {
+export function translate(x: number, y: number, emitChanges: boolean = true) {
   matrix = matrix.translate(x, y)
-  return onChange.emit(TRANSLATE, x, y)
+  if (emitChanges) onChange.emit(TRANSLATE, x, y)
 }
 
-export function scale(x: number, y: number) {
-  matrix = matrix.scaleNonUniform(x, y)
-  return onChange.emit(SCALE, x, y)
+export function scale(factor: number, emitChanges: boolean = true) {
+  matrix = matrix.scale(factor)
+  if (emitChanges) onChange.emit(SCALE, factor)
 }
 
-export function rotate(radians: number) {
+export function rotate(radians: number, emitChanges: boolean = true) {
   const degrees = radians * 180 / Math.PI
-  matrix = matrix.rotate(degrees)
-  return onChange.emit(ROTATE, degrees)
+  matrix = matrix.rotate(degrees, degrees)
+  if (emitChanges) onChange.emit(ROTATE, degrees)
 }
 
 export function transformedPoint(x: number, y: number) {
@@ -28,6 +28,10 @@ export function transformedPoint(x: number, y: number) {
   pt.x = x
   pt.y = y
   return pt.matrixTransform(matrix.inverse())
+}
+
+export function getMatrix() {
+  return matrix
 }
 
 export function reset() {

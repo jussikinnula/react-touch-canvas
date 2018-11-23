@@ -2,12 +2,14 @@ import * as React from 'react'
 import { Touch, Canvas } from '../../../src'
 import './index.styl'
 
+interface Props {}
+
 interface State {
   width: number
   height: number
 }
 
-export default class App extends React.Component<{}, State> {
+export class NormalCanvasPage extends React.Component<Props, State> {
   container: HTMLDivElement = null
 
   ctx: CanvasRenderingContext2D = null
@@ -51,8 +53,10 @@ export default class App extends React.Component<{}, State> {
     const { width, height } = this.state
 
     return (
-      <div className="App" ref={this.updateContainer}>
-        <Touch>
+      <div className="NormalCanvasPage" ref={this.updateContainer}>
+        <Touch
+          options={{ wheelSensitivityZoom: 5 }}
+        >
           <Canvas
             width={width}
             height={height}
