@@ -1,6 +1,6 @@
 {
   "name": "react-touch-canvas",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "React higher order components to create zoomable/pannable canvas",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

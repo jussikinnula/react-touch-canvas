@@ -9,10 +9,23 @@ const shaders = Shaders.create({
   image: {
     frag: GLSL`
 precision highp float;
+varying vec2 v_position;
+uniform sampler2D u_sampler;
+
+void main() {
+  if (v_position.x < 0.0 || v_position.x > 1.0 || v_position.y < 0.0 || v_position.y > 1.0) {
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 0.5);
+    return;
+  }
+
+  gl_FragColor = texture2D(u_sampler, v_position);
+  return;
+}`,
+    vert: GLSL`
+attribute vec2 _p;
 
 varying vec2 v_position;
 
-uniform sampler2D u_sampler;
 uniform vec2 u_image;
 uniform vec2 u_pointer;
 uniform vec2 u_resolution;
@@ -20,48 +33,38 @@ uniform vec2 u_scale;
 uniform vec2 u_translation;
 
 void main() {
+  // Set viewport position
+  gl_Position = vec4(_p, 0.0, 1.0);
+
   // Initial scale
   vec2 ratio = vec2(u_image.x / u_resolution.x, u_image.y / u_resolution.y);
   float multiplier = max(ratio.x, ratio.y);
   vec2 initialScale = vec2(multiplier, multiplier);
 
   // Use position
-  vec2 imagePosition = v_position;
+  vec2 position = vec2(0.5, 0.5) * (_p + vec2(1.0, 1.0));
 
   // Scale
-  imagePosition = imagePosition / u_scale;
+  position = position / u_scale;
 
   // Center offset (in real pixels)
   vec2 centerOffset = (u_resolution - u_image / initialScale) * vec2(0.5, 0.5);
 
   // Scale offset (in relative 0...1)
   vec2 scaleOffset = vec2(1.0, 1.0) / u_scale * vec2(0.5, 0.5);
-  imagePosition = imagePosition + u_scale * scaleOffset - scaleOffset;
+  position = position + u_scale * scaleOffset - scaleOffset;
 
   // Translate
-  imagePosition = imagePosition - (u_translation + centerOffset) / u_resolution;
+  position = position - (u_translation + centerOffset) / u_resolution;
 
   // Convert aspect ratio to real pixels
-  imagePosition = imagePosition * u_resolution / u_image;
+  position = position * u_resolution / u_image;
 
   // Maximize image size
-  imagePosition = imagePosition * initialScale;
+  position = position * initialScale;
 
-  if (imagePosition.x < 0.0 || imagePosition.x > 1.0 || imagePosition.y < 0.0 || imagePosition.y > 1.0) {
-    gl_FragColor = vec4(1.0, 0.0, 0.0, 0.5);
-    return;
-  }
-
-  gl_FragColor = texture2D(u_sampler, imagePosition);
-  return;
-}`,
-    vert: GLSL`
-attribute vec2 _p;
-varying vec2 v_position;
-
-void main() {
-  gl_Position = vec4(_p, 0.0, 1.0);
-  v_position = vec2(0.5, 0.5) * (_p + vec2(1.0, 1.0));
+  // Set position for fragment shader
+  v_position = position;
 }`
   }
 })
