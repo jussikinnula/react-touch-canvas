@@ -19,10 +19,21 @@ export class ImageCanvas extends React.Component<Props> {
     const { image } = this.props
     if (!this.canvas || !image) return
     const { width, height } = image
-    this.canvas.width = width
-    this.canvas.height = height
+    let size: number = 0;
+    let x: number = 0;
+    let y: number = 0;
+    if (width > height) {
+      size = width;
+      y = (width - height) / 2
+    } else {
+      size = height;
+      x = (height - width) / 2
+    }
+
+    this.canvas.width = size
+    this.canvas.height = size
     const ctx = this.canvas.getContext('2d')
-    ctx.drawImage(image, 0, 0, width, height)
+    ctx.drawImage(image, x, y, width, height)
   }
 
   setup = (node: HTMLCanvasElement) => {

@@ -30,6 +30,7 @@ uniform vec2 u_image;
 uniform vec2 u_pointer;
 uniform vec2 u_resolution;
 uniform vec2 u_scale;
+uniform float u_angle;
 uniform vec2 u_translation;
 
 void main() {
@@ -59,9 +60,17 @@ void main() {
 
   // Convert aspect ratio to real pixels
   position = position * u_resolution / u_image;
-
   // Maximize image size
   position = position * initialScale;
+
+  // Rotate
+  mat2 rotationMatrix = mat2(
+    cos(u_angle), -sin(u_angle),
+    sin(u_angle), cos(u_angle)
+  );
+  position = position - vec2(0.5, 0.5);
+  position = position * rotationMatrix;
+  position = position + vec2(0.5, 0.5);
 
   // Set position for fragment shader
   v_position = position;
@@ -77,6 +86,8 @@ interface State {
   translation: Vec2
   scale: Vec2
   pointer: Vec2
+  degrees: number
+  crosshair: boolean
 }
 
 export class WebGLCanvasPage extends React.Component<Props, State> {
@@ -91,7 +102,9 @@ export class WebGLCanvasPage extends React.Component<Props, State> {
     image: [0, 0],
     translation: [0, 0],
     scale: [1, 1],
-    pointer: [0, 0]
+    pointer: [0, 0],
+    degrees: 0,
+    crosshair: false
   }
 
   componentWillMount() {
@@ -100,7 +113,8 @@ export class WebGLCanvasPage extends React.Component<Props, State> {
     this.image.src = require('./cat.png')
     this.image.onload = () => {
       const { width, height } = this.image
-      this.setState({ image: [width, height ]})
+      const size = Math.max(width, height)
+      this.setState({ image: [size, size]})
     };
   }
 
@@ -137,8 +151,8 @@ export class WebGLCanvasPage extends React.Component<Props, State> {
     ] })
   }
 
-  onRotate = (_degrees: number) => {
-    // TODO
+  onRotate = (degrees: number) => {
+    this.setState({ degrees })
   }
 
   onCoordinates = (x: number, y: number) => {
@@ -147,23 +161,52 @@ export class WebGLCanvasPage extends React.Component<Props, State> {
   }
 
   render() {
-    const { resolution, image, translation, scale, pointer } = this.state
+    const { resolution, image, translation, scale, pointer, degrees, crosshair } = this.state
 
     const sampler = image[0] > 0 && image[1] > 0 && <ImageCanvas image={this.image} />
+    const angle = degrees * Math.PI / 180
 
     return (
       <div className="WebGLCanvasPage" ref={this.updateContainer}>
         <div className="WebGLCanvasPage-Options">
-          <input
-            className="WebGLCanvasPage-Options-Slider"
-            type="range"
-            onChange={this.onScale}
-            min={1}
-            max={10}
-            step={0.01}
-            value={scale[0]}
-          />
+          <div className="WebGLCanvasPage-Options-Row">
+            <div className="WebGLCanvasPage-Options-Row-Label">
+              Zoom
+            </div>
+            <input
+              className="WebGLCanvasPage-Options-Row-Slider"
+              type="range"
+              onChange={this.onScale}
+              min={1}
+              max={10}
+              step={0.01}
+              value={scale[0]}
+            />
+          </div>
+          <div className="WebGLCanvasPage-Options-Row">
+            <div className="WebGLCanvasPage-Options-Row-Label">
+              Rotate
+            </div>
+            <input
+              className="WebGLCanvasPage-Options-Row-Slider"
+              type="range"
+              onChange={event => this.onRotate(parseInt(event.target.value, 10))}
+              min={0}
+              max={270}
+              step={1}
+              value={degrees}
+            />
+          </div>
+          <div className="WebGLCanvasPage-Options-Row">
+            <div className="WebGLCanvasPage-Options-Row-Label">
+              Crosshair
+            </div>
+            <input type="checkbox" checked={crosshair} onChange={event => this.setState({ crosshair: event.target.checked })} />
+          </div>
         </div>
+        {crosshair && <div className="WebGLCanvasPage-Center">
+          <div className="WebGLCanvasPage-Center-CrossHair">&nbsp;</div>
+        </div>}
         <Touch
           onTranslate={this.onTranslate}
           onRotate={this.onRotate}
@@ -177,6 +220,7 @@ export class WebGLCanvasPage extends React.Component<Props, State> {
               u_resolution: resolution,
               u_translation: translation,
               u_scale: scale,
+              u_angle: angle,
               u_image: image
             }}
           />

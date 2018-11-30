@@ -1,13 +1,43 @@
+crosshair = #00ff00
+
 .WebGLCanvasPage
   position absolute
   top 0
   left 0
   right 0
   bottom 0
-
-  &-Options {
+  
+  &-Options
     position absolute
     top 1em
     right 1em
     z-index 99
-  }
+    &-Row
+      display block
+      &-Label
+        display inline-block
+        width 5em
+        vertical-align middle
+        text-align right
+        margin-right 0.2em
+      &-Slider
+        display inline-block
+        width 10em
+        vertical-align middle
+
+  &-Center
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    display flex
+    z-index 97
+
+    &-CrossHair
+      margin auto
+      background-color white
+      width 25px
+      height 25px
+      z-index 98
+      background linear-gradient(to bottom, transparent 35%, crosshair 35%, crosshair 65%, transparent 65%), linear-gradient(to right, transparent 35%, crosshair 35%, crosshair 65%, transparent 65%)
